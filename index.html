@@ -1,32 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="todo.css">
+  </head>
+  <body>
+    <p>Todo List</p>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="todo.css">
+    <div class="todo-input-grid">
+      <input placeholder="Todo name"
+        class="js-name-input name-input">
+      <input type="date"
+        class="js-due-date-input due-date-input">
+      <button onclick="
+        addTodo();
+      " class="add-todo-button">Add</button>
+    </div>
 
-  <title>To do list</title>
-</head>
+    <div class="js-todo-list todo-grid"></div>
 
-<body>
-  <h1 class="heading">
-    Todo List
-  </h1>
-<div class="todo-input-grid">
-  <input class="js-name-input name-class" placeholder="Add ToDo task">
-
-  <div class="date-block">
-    <label>Select Due Date</label>
-    <input type="date" class="js-date-input date-class">
-  </div>
-
-  <button onclick="addTodo()" class="add-button">Add</button>
-</div>
-
-  <script src="todo.js">
-
-  </script>
-</body>
-
+    <script src="todo.js"></script>
+  </body>
 </html>
