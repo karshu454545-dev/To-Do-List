@@ -16,9 +16,7 @@ A practical daily task manager that lets you add tasks with due dates, track you
 - ➕ Add tasks with a title and due date
 - 📅 Date picker for setting task deadlines
 - 💾 **localStorage** — tasks are saved and persist after page refresh or browser close
-- ✔️ Mark tasks as complete
 - 🗑️ Delete tasks you no longer need
-- 📱 Responsive design with mobile viewport support
 
 ## 🛠️ Technologies Used
 | Technology | Purpose |
