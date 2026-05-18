@@ -14,11 +14,7 @@ h1{
   row-gap: 20px;
   align-items: center;
 }
-@media (max-width: 600px) {
-  .todo-grid, .todo-input-grid{
-    grid-template-columns: 1fr;
-  }
-}
+
 .name-class, .date-class{
   font-size: 15px;
   padding: 6px;
@@ -46,15 +42,4 @@ h1{
   width: 100%;
   box-sizing: border-box;
 }
-.todo-input-grid{
-  display: grid;
-  grid-template-columns: 1fr 200px auto;
-  gap: 14px;
-  align-items: center;
-  max-width: 900px;
-}
-.date-block{
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
+
