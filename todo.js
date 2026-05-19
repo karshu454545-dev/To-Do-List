@@ -1,38 +1,48 @@
-let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
-renderTodo();
-    function addTodo() {
-      let inputElement = document.querySelector('.js-name-input');
-      let name = inputElement.value;
-      let dateElement = document.querySelector('.js-date-input');
-      let dueDate = dateElement.value;
-      if (name === '' || dueDate === '') {
+let toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
+    renderToDoList();
+    function addToDoList() {
+      let toDoElement = document.querySelector('.todo-input');
+      let toDoDateElement = document.querySelector('.todo-date');
+      let name = toDoElement.value;
+      let date = toDoDateElement.value;
+      if (name === '' || date === '') {
+        if (name === '' && date === '') {
+          alert('Please enter Tasks and Due Dates');
+          return;
+        }
+        (name === '') ?
+          alert('Please enter a Task') :
+          alert('Please enter a due Date')
         return;
       }
-      todoList.push({
-        name, dueDate
-      });
-      localStorage.setItem('todoList', JSON.stringify(todoList));
-      console.log(todoList);
-      inputElement.value = '';
-      dateElement.value='';
-      renderTodo();
+      toDoList.push({ name, date, status: false });
+      localStorage.setItem('toDoList', JSON.stringify(toDoList));
+      toDoElement.value = '';
+      toDoDateElement.value = '';
+      console.log(toDoList);
+      renderToDoList();
     }
-    function renderTodo() {
-      let todoHTML = '';
-      for (let i = 0; i < todoList.length; i++) {
-        let taskObject = todoList[i];
-        let { name, dueDate } = taskObject;
-        const html = `
-        <div>${name}</div>
-        <div>${dueDate}</div>
+    function renderToDoList() {
+      let taskHtml = '';
+      for (let i = 0; i < toDoList.length; i++) {
+        let { name, date, status } = toDoList[i];
+        let buttonText = status ? 'Done ✅' : 'Click if Done';
+        let buttonColor = status ? 'lightgreen' : 'rgb(230, 230, 230)';
+        taskHtml += `<div>${name}</div>
+         <div>${date}</div> 
           <button onclick="
-          todoList.splice(${i}, 1);
-          localStorage.setItem('todoList', JSON.stringify(todoList));
-          renderTodo();
+          toDoList.splice(${i}, 1);
+          localStorage.setItem('toDoList', JSON.stringify(toDoList));
+          renderToDoList();
           " class="delete-button">Delete</button>
+          <button style="background-color: ${buttonColor};" class="task-status-btn" onclick="
+          toDoList[${i}].status = !toDoList[${i}].status;
+          localStorage.setItem('toDoList', JSON.stringify(toDoList));
+          renderToDoList();
+          " 
+          
+          >${buttonText}</button>
           `;
-        todoHTML += html;
       }
-      document.querySelector('.display').innerHTML = todoHTML;
+      document.querySelector('.display-tasks').innerHTML = `${taskHtml}`;
     }
-    
